@@ -8,13 +8,16 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
     let [myFriendNewData] = useState([]);
 
     const onSubmit = (e) => {
+        console.log(e);
         e.preventDefault();
         let about = ''
         if(!name){
+           
             alert('Please add a task');
             return
         }
         if(name && name.charAt(0) === name.charAt(0).toLowerCase()){
+
             alert('Name should start with capital letter');
             return
         }
@@ -24,15 +27,28 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
             about = 'is my friend';
         }
 
-        const confirmMessage = 'A friend with this name already exists. Are you sure ?';
+        let confirmMessage = '';
+        
         myFriendData.forEach((frnd) => {
         if(name === frnd.name){
+            confirmMessage = 'A friend with this name already exists. Are you sure ?'
             let a = window.confirm(confirmMessage); 
             if(a === true){
                 addMyFriend({name, favourite, about});
                 setText('');
                 setFavourite(false);
+            }else {
+                confirmMessage = ''
+                a= false;
             }
+        }else{  
+          
+         
+                addMyFriend({name, favourite, about});
+                setText('');
+                setFavourite(false);
+            
+            
         }
         });
       
@@ -47,11 +63,11 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
         }
       }
 
-    const filterList = () => {
+    const filterList = (name) => {
         if(name.length === 0){
         myFriendNewData = myFriendData;
         }else {
-        myFriendNewData =  myFriendData.filter((friend) => name.length > 1 ? friend.name.toLowerCase().startsWith(name.toLocaleLowerCase()) : myFriendData);
+        myFriendNewData =  myFriendData.filter((friend) => name.length > 0 ? friend.name.toLowerCase().startsWith(name.toLocaleLowerCase()) : myFriendData);
         }
         console.log(myFriendNewData);
         setFrndList(myFriendNewData);
@@ -67,8 +83,7 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
                 placeholder='Add or search your friend'
                 id='search'
                 value={name}
-                onChange={(e) => setText(e.target.value)}
-                onKeyUp={() => debounce(filterList(), 3000)}
+                onChange={(e) => {setText(e.target.value);debounce(filterList(e.target.value), 3000)}}
                 />
             </div>
             <div className="form-control form-control-check">

@@ -14,7 +14,7 @@ body {
   max-width: 400px;
   margin: 30px auto;
   overflow: auto;
-  min-height: 480px;
+  min-height: 460px;
   border: 1px solid lightgrey;
   border-radius: 5px;
   box-shadow: 5px 10px 8px #888888;
@@ -92,6 +92,14 @@ body {
 }
 .delbtn:focus {
   outline: none;
+}
+
+select#frnddrop{
+  outline: none;
+  border-radius: 5px;
+  height: 30px;
+  border: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .favbtn:focus {

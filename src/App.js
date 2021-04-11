@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Searchbar from './components/Searchbar';
 import Friends from './components/Friends';
-import {useState} from 'react'; 
+import {useState, useEffect} from 'react'; 
 const App = () => {
   
   const [friendsData, setList] = useState([
@@ -30,7 +30,14 @@ const App = () => {
       favourite: false
   }
   ]);
+
+  const  [friendNewData, setNewFriendList] = useState(friendsData);
   
+  useEffect(() => {
+    setNewFriendList(friendsData);
+  },[friendsData]);
+
+
   const addFriend = (myFriend) => {
     if(myFriend){
     const id = Math.floor(Math.random() * 1000) + 1;
@@ -51,14 +58,45 @@ const App = () => {
     setList(friendsData.map((fri) => fri.id === id ? {...fri, favourite: !fri.favourite, about: !fri.favourite ? isFriend : isNotFriend} : fri));
   }
 
+  const sortFriendsList = (frndList) => {
+    console.log(frndList);
+    let multiplier = 1;
+    if(frndList === 'desc'){
+      multiplier = -1;
+    }
+    setNewFriendList(friendsData.slice().sort((a,b) => { 
+      if(a.name < b.name){
+        return -1 * multiplier;
+      } 
+      if(a.name > b.name){
+        return 1 * multiplier;
+      }
+        return 0;
+      
+     }));
+  }
+
+
+  
+  const dropFilterAll = () => setNewFriendList([...friendsData]);
+
+  const dropFilterFav = () => setNewFriendList(friendsData.filter((list) => list.favourite === true));
+
+  const dropFilterNotFav = () => setNewFriendList(friendsData.filter((list) => list.favourite === false));
 
 
   return (
     <div className = 'container'>
-      <Header title='Friends List' addMyFriend={addFriend}/>
-      <Searchbar addMyFriend={addFriend} myFriendData={friendsData} setFrndList={setList}/>
-    {friendsData.length >0 ? (
-    <Friends friendsdata={friendsData} 
+      <Header title='Friends List' 
+        addMyFriend={addFriend} 
+        myFriendList={sortFriendsList}
+        dropFilterAll={dropFilterAll}
+        dropFilterFav={dropFilterFav}
+        dropFilterNotFav={dropFilterNotFav}
+        />
+      <Searchbar addMyFriend={addFriend} myFriendData={friendsData} setFrndList={setNewFriendList}/>
+    {friendNewData.length >0 ? (
+    <Friends friendsdata={friendNewData} 
       onDeleteFriend={deleteFriend} onToggleFav={toggleFavourite}/>) : (' Sorry no friend present in the list') }
     </div>
   );

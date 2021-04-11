@@ -2,14 +2,40 @@ import PropTypes from 'prop-types'
 import { FaSortAlphaUp } from 'react-icons/fa';
 import { FaSortAlphaDown } from 'react-icons/fa';
 import {useState} from 'react'
-const Header = ({title}) => {
+const Header = ({title, myFriendList, dropFilterAll, dropFilterFav, dropFilterNotFav}) => {
   
-    const [dropvalue, setDropText] = useState('');
-    const [sortList, setSortOrder] = useState(false);
+    const [dropvalue, setDropText] = useState('All');
+     let [sortList, setSortOrder] = useState(false);
    
     const sortFriends = () => {
-        setSortOrder(!sortList);
-    }
+        setSortOrder(!sortList)
+        if(sortList){
+            myFriendList('asc');
+            
+        }else{
+            myFriendList('desc');
+        }
+        
+
+     }
+
+     const changeList = (e) => {
+     
+        setDropText(e.target.value);
+        console.log(dropvalue);
+        if(e.target.value === 'All'){
+            
+            dropFilterAll();
+        } 
+        if (e.target.value === 'Fav'){
+            
+            dropFilterFav();
+        } 
+        if (e.target.value === 'Notfav') {
+            dropFilterNotFav();
+        } 
+           
+     }
 
   return (
         <div>
@@ -18,8 +44,8 @@ const Header = ({title}) => {
             <button className="btn-sort" onClick={sortFriends}>{sortList ? (<FaSortAlphaUp/>) : (<FaSortAlphaDown/>) }</button>
             <select name="friends" id="frnddrop" 
             value={dropvalue} 
-            onChange={(e) => setDropText(e.target.value)} >
-            <option value="All">All</option>
+            onChange={changeList} >
+            <option value="All" >All</option>
             <option value="Fav">Favourite</option>
             <option value="Notfav">Not Favourite</option>
             </select>
