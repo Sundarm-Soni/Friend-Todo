@@ -61,7 +61,7 @@ const App = () => {
   const sortFriendsList = (frndList) => {
     console.log(frndList);
     let multiplier = 1;
-    if(frndList === 'desc'){
+    if(frndList === 'asc'){
       multiplier = -1;
     }
     setNewFriendList(friendsData.slice().sort((a,b) => { 

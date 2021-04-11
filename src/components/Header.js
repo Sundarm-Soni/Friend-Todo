@@ -41,7 +41,7 @@ const Header = ({title, myFriendList, dropFilterAll, dropFilterFav, dropFilterNo
         <div>
         <header className="header">
             <h1>{title}</h1>
-            <button className="btn-sort" onClick={sortFriends}>{sortList ? (<FaSortAlphaUp/>) : (<FaSortAlphaDown/>) }</button>
+            <button className="btn-sort" onClick={sortFriends}>{!sortList ? (<FaSortAlphaUp/>) : (<FaSortAlphaDown/>) }</button>
             <select name="friends" id="frnddrop" 
             value={dropvalue} 
             onChange={changeList} >
