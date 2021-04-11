@@ -14,9 +14,10 @@ body {
   max-width: 400px;
   margin: 30px auto;
   overflow: auto;
-  min-height: 400px;
+  min-height: 480px;
   border: 1px solid lightgrey;
   border-radius: 5px;
+  box-shadow: 5px 10px 8px #888888;
 }
 
 .header {
@@ -69,8 +70,11 @@ body {
  margin-left:10px;
 }
 
-.head-btn{
-  
+.btn-sort{
+  padding: 10px;
+  border: 1px solid  gainsboro;
+  border-radius: 5px;
+  outline: none;
 }
 
 .favbtn,.delbtn{
@@ -160,10 +164,6 @@ form {
   outline: none;
 }
 
-.form-control-check {
-  
- 
-}
 
 .form-control-check label {
   float: right; 

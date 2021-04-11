@@ -56,7 +56,7 @@ const App = () => {
   return (
     <div className = 'container'>
       <Header title='Friends List' addMyFriend={addFriend}/>
-      <Searchbar addMyFriend={addFriend} myFriendData={friendsData} />
+      <Searchbar addMyFriend={addFriend} myFriendData={friendsData} setFrndList={setList}/>
     {friendsData.length >0 ? (
     <Friends friendsdata={friendsData} 
       onDeleteFriend={deleteFriend} onToggleFav={toggleFavourite}/>) : (' Sorry no friend present in the list') }
