@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Friend-Todo/static/css/main.4bd5e967.chunk.css",
+    "main.js": "/Friend-Todo/static/js/main.afe5ac0d.chunk.js",
+    "main.js.map": "/Friend-Todo/static/js/main.afe5ac0d.chunk.js.map",
+    "runtime-main.js": "/Friend-Todo/static/js/runtime-main.65c9b787.js",
+    "runtime-main.js.map": "/Friend-Todo/static/js/runtime-main.65c9b787.js.map",
+    "static/js/2.1dfdbc13.chunk.js": "/Friend-Todo/static/js/2.1dfdbc13.chunk.js",
+    "static/js/2.1dfdbc13.chunk.js.map": "/Friend-Todo/static/js/2.1dfdbc13.chunk.js.map",
+    "static/js/3.bd990408.chunk.js": "/Friend-Todo/static/js/3.bd990408.chunk.js",
+    "static/js/3.bd990408.chunk.js.map": "/Friend-Todo/static/js/3.bd990408.chunk.js.map",
+    "index.html": "/Friend-Todo/index.html",
+    "static/css/main.4bd5e967.chunk.css.map": "/Friend-Todo/static/css/main.4bd5e967.chunk.css.map",
+    "static/js/2.1dfdbc13.chunk.js.LICENSE.txt": "/Friend-Todo/static/js/2.1dfdbc13.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.65c9b787.js",
+    "static/js/2.1dfdbc13.chunk.js",
+    "static/css/main.4bd5e967.chunk.css",
+    "static/js/main.afe5ac0d.chunk.js"
+  ]
+}
