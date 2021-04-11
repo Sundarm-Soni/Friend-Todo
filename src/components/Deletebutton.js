@@ -1,9 +1,9 @@
 import {FaTrashAlt} from 'react-icons/fa';
 
-const Deletebutton = () => {
+const Deletebutton = ({onDel}) => {
     return ( 
     <button 
-        className='delbtn'><FaTrashAlt style={{color:'grey'}}/></button>
+        className='delbtn'  onClick={onDel}><FaTrashAlt style={{color:'grey'}}/></button>
         )
 }
 

@@ -4,7 +4,7 @@ import Friends from './components/Friends';
 import {useState} from 'react'; 
 const App = () => {
   
-  const [friendsData, setTasks] = useState([
+  const [friendsData, setList] = useState([
     {
         id: 1,
         name: 'Sundarm',
@@ -34,12 +34,17 @@ const App = () => {
       favourite: true
   }
   ]);
+  
+  const deleteFriend = (id) => {
+    console.log(id);
+    setList(friendsData.filter((item) => item.id !== id));
+  }
 
   return (
     <div className = 'container'>
       <Header title='Friends List'/>
       <Searchbar/>
-      <Friends friendsdata={friendsData}/>
+    {friendsData.length >0 ? (<Friends friendsdata={friendsData} onDeleteFriend={deleteFriend}/>) : (' Sorry no friend present in the list') }
     </div>
   );
 }
