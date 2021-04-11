@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 
-const Searchbar = () => {
+const Searchbar = ({toggleFavouriteCheck}) => {
 
     const [text, setText] = useState('');
     const [favourite, setFavourite] = useState(false)

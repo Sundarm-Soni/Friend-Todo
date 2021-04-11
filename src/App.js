@@ -22,7 +22,7 @@ const App = () => {
     {
         id: 3,
         name: 'Mrinal',
-        about: 'is not your friend',
+        about: 'is your friend',
         time: '',
         favourite: true
     },
@@ -31,7 +31,7 @@ const App = () => {
       name: 'Ayush',
       about: 'is not your friend',
       time: '',
-      favourite: true
+      favourite: false
   }
   ]);
   
@@ -40,11 +40,21 @@ const App = () => {
     setList(friendsData.filter((item) => item.id !== id));
   }
 
+  const toggleFavourite = (id) => {
+    setList(friendsData.map((fri) => fri.id == id ? {...fri, favourite: !fri.favourite} : fri));
+  }
+
+  const toggleFavCheckbox = () => {
+
+  }
+
   return (
     <div className = 'container'>
       <Header title='Friends List'/>
-      <Searchbar/>
-    {friendsData.length >0 ? (<Friends friendsdata={friendsData} onDeleteFriend={deleteFriend}/>) : (' Sorry no friend present in the list') }
+      <Searchbar onToggle={toggleFavCheckbox}/>
+    {friendsData.length >0 ? (
+    <Friends friendsdata={friendsData} 
+      onDeleteFriend={deleteFriend} onToggleFav={toggleFavourite}/>) : (' Sorry no friend present in the list') }
     </div>
   );
 }

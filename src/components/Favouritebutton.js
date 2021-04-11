@@ -1,8 +1,11 @@
 import { FaStar } from 'react-icons/fa';
 
-const Favouritebutton = () => {
+const Favouritebutton = ({favFriend, onToggle}) => {
+    const favstyle={color: 'yellow'}
+    const myfavstyle={color:'lightgrey'};
+    
     return ( 
-    <button className='favbtn'><FaStar /></button>
+    <button className='favbtn' onClick={onToggle}><FaStar style={favFriend.favourite ? favstyle : myfavstyle}/></button>
         )
 }
 
