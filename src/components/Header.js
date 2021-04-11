@@ -22,7 +22,6 @@ const Header = ({title, myFriendList, dropFilterAll, dropFilterFav, dropFilterNo
      const changeList = (e) => {
      
         setDropText(e.target.value);
-        console.log(dropvalue);
         if(e.target.value === 'All'){
             
             dropFilterAll();

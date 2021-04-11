@@ -48,7 +48,6 @@ const App = () => {
 
 
   const deleteFriend = (id) => {
-    console.log(id);
     setList(friendsData.filter((item) => item.id !== id));
   }
 

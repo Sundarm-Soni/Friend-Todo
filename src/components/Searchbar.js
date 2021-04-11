@@ -8,7 +8,6 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
     let [myFriendNewData] = useState([]);
 
     const onSubmit = (e) => {
-        console.log(e);
         e.preventDefault();
         let about = ''
         if(!name){
@@ -69,7 +68,6 @@ const Searchbar = ({addMyFriend, myFriendData, setFrndList}) => {
         }else {
         myFriendNewData =  myFriendData.filter((friend) => name.length > 0 ? friend.name.toLowerCase().startsWith(name.toLocaleLowerCase()) : myFriendData);
         }
-        console.log(myFriendNewData);
         setFrndList(myFriendNewData);
     }
 
