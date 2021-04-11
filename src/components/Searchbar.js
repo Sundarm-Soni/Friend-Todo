@@ -1,17 +1,23 @@
 import React from 'react'
 import {useState} from 'react'
 
-const Searchbar = ({addMyFriend}) => {
+const Searchbar = ({addMyFriend, myFriendData}) => {
 
     const [name, setText] = useState('');
     const [favourite, setFavourite] = useState(false)
+    let [myFriendNewData] = useState([]);
 
     const onSubmit = (e) => {
         e.preventDefault();
         let about = ''
         if(!name){
-            alert('Please add a task')
+            alert('Please add a task');
             return
+        }
+        if(name && name.charAt(0) === name.charAt(0).toLowerCase()){
+            alert('Name should start with capital letter');
+            return
+            
         }
         if(favourite === false){
             about = 'not my friend';
@@ -22,11 +28,12 @@ const Searchbar = ({addMyFriend}) => {
         addMyFriend({name, favourite, about});
         setText('');
         setFavourite(false);
-
-
     }
 
-
+    const filterList = () => {
+        myFriendNewData =   myFriendData.filter((friend) => friend.name.toLowerCase() === name.toLowerCase());
+        console.log(myFriendNewData);
+    }
 
     return (
         <form onSubmit={onSubmit}>
@@ -38,6 +45,7 @@ const Searchbar = ({addMyFriend}) => {
                 id='search'
                 value={name}
                 onChange={(e) => setText(e.target.value)}
+                onKeyUp={() => filterList()}
                 />
             </div>
             <div className="form-control form-control-check">

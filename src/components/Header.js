@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import Button from './Button';
-const Header = ({title}) => {
+const Header = ({title, addFriend}) => {
     const onClick = () => {
-        console.log('Click');
-      
+        
+        addFriend();
     }
     
     return (

@@ -32,9 +32,11 @@ const App = () => {
   ]);
   
   const addFriend = (myFriend) => {
-    const id = Math.floor(Math.random() * 1000) +1;
+    if(myFriend){
+    const id = Math.floor(Math.random() * 1000) + 1;
     const newFriend = { id, ...myFriend }
     setList([...friendsData, newFriend]);
+  }
   }
 
 
@@ -44,15 +46,17 @@ const App = () => {
   }
 
   const toggleFavourite = (id) => {
-    setList(friendsData.map((fri) => fri.id == id ? {...fri, favourite: !fri.favourite} : fri));
+    let isFriend = 'is my friend';
+    let isNotFriend = 'not my friend';
+    setList(friendsData.map((fri) => fri.id === id ? {...fri, favourite: !fri.favourite, about: !fri.favourite ? isFriend : isNotFriend} : fri));
   }
 
 
 
   return (
     <div className = 'container'>
-      <Header title='Friends List'/>
-      <Searchbar addMyFriend={addFriend}/>
+      <Header title='Friends List' addMyFriend={addFriend}/>
+      <Searchbar addMyFriend={addFriend} myFriendData={friendsData} />
     {friendsData.length >0 ? (
     <Friends friendsdata={friendsData} 
       onDeleteFriend={deleteFriend} onToggleFav={toggleFavourite}/>) : (' Sorry no friend present in the list') }
