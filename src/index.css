@@ -68,7 +68,13 @@ body {
 .delbtn{
  margin-left:10px;
 }
+
+.head-btn{
+  
+}
+
 .favbtn,.delbtn{
+  position: relative;
   display: inline-block;
   background: none;
   color: #fff;
